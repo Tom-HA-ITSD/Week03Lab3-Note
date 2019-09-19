@@ -20,6 +20,6 @@
         ${contents}
         <br>
         <br>
-        <a href="note">edit</a>
+        <a href="note?edit=true">edit</a>
     </body>
 </html>

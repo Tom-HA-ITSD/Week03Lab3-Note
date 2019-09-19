@@ -38,6 +38,13 @@ public class NoteServlet extends HttpServlet {
         request.setAttribute("title", note.getTitle());
         request.setAttribute("contents", note.getContents());
         
+        String edit = request.getParameter("edit");
+        
+        if(edit != null && edit.equals("true")){
+            getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp")
+                .forward(request, response);
+        }
+        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
                 .forward(request, response);
     }
@@ -56,6 +63,14 @@ public class NoteServlet extends HttpServlet {
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         // to read files
         BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        
+        Note note = new Note();
+        note.setTitle(br.readLine());
+        note.setContents(br.readLine());
+        
+        request.setAttribute("title", note.getTitle());
+        request.setAttribute("contents", note.getContents());
+        
         // to write to a file
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
     }
