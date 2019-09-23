@@ -17,7 +17,7 @@
         <form action="note" method="post">
             Title: <input type="text" name="title" value="${title}"><br>
             Contents: <textarea name="contents" rows="5" cols="30">${contents}</textarea><br>
-            <input type="submit" name="push">
+            <input type="submit" value="Save">
         </form>
     </body>
 </html>
