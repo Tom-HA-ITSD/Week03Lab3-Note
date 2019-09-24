@@ -43,6 +43,7 @@ public class NoteServlet extends HttpServlet {
         if(edit != null && edit.equals("true")){
             getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp")
                 .forward(request, response);
+            return;
         }
         
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
@@ -69,8 +70,8 @@ public class NoteServlet extends HttpServlet {
         // to write to a file
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
         
-        pw.write(note.getTitle() + "\n");
-        pw.write(note.getContents());
+        pw.println(note.getTitle());
+        pw.println(note.getContents());
         
         pw.close();
         
